@@ -1,0 +1,1 @@
+./model_storage/epoch-checkpoint_patch_size-32_embed_dim-128.ckpt
