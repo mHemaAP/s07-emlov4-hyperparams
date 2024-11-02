@@ -25,23 +25,23 @@ class CustomModelCheckpiont(ModelCheckpoint):
     def _save_checkpoint(self, trainer, filepath):
         trainer.lightning_module.save_transformed_model = True
         # Change base path to the new storage location
-        new_base_path = "/workspace/s07-emlov4-hyperparams/model_storage"
-        filename = os.path.basename(filepath).split(".ckpt")[0]
-        new_filepath = os.path.join(
-            new_base_path, 
-            f"{filename}_patch_size-{trainer.model.patch_size}_embed_dim-{trainer.model.embed_dim}.ckpt"
-        )
+        # new_base_path = "/workspace/s07-emlov4-hyperparams/model_storage"
+        # filename = os.path.basename(filepath).split(".ckpt")[0]
+        # new_filepath = os.path.join(
+        #     new_base_path, 
+        #     f"{filename}_patch_size-{trainer.model.patch_size}_embed_dim-{trainer.model.embed_dim}.ckpt"
+        # )
         print("Current Working Directory:", os.getcwd())
         # Create directory if it doesn't exist
-        os.makedirs(new_base_path, exist_ok=True)
-        # filepath = filepath.split(".ckpt")[0]
-        # filepath = f"{filepath}_patch_size-{trainer.model.patch_size}_embed_dim-{trainer.model.embed_dim}.ckpt"
+        # os.makedirs(new_base_path, exist_ok=True)
+        filepath = filepath.split(".ckpt")[0]
+        filepath = f"{filepath}_patch_size-{trainer.model.patch_size}_embed_dim-{trainer.model.embed_dim}.ckpt"
 
-        # print(f"File saved to {filepath}")
-        # super()._save_checkpoint(trainer, filepath)
+        print(f"File saved to {filepath}")
+        super()._save_checkpoint(trainer, filepath)
 
-        print(f"File saved to {new_filepath}")
-        super()._save_checkpoint(trainer, new_filepath)
+        # print(f"File saved to {new_filepath}")
+        # super()._save_checkpoint(trainer, new_filepath)
         # print(filepath)
 
 
@@ -94,14 +94,14 @@ def test_task(
 ):
     log.info("Starting testing!")
 
-    # checkpoint_curr_best_model_path = trainer.checkpoint_callback.best_model_path.split(".ckpt")[0]
-    # checkpoint_curr_best_model_path = f"{checkpoint_curr_best_model_path}_patch_size-{trainer.model.patch_size}_embed_dim-{trainer.model.embed_dim}.ckpt"
+    checkpoint_curr_best_model_path = trainer.checkpoint_callback.best_model_path.split(".ckpt")[0]
+    checkpoint_curr_best_model_path = f"{checkpoint_curr_best_model_path}_patch_size-{trainer.model.patch_size}_embed_dim-{trainer.model.embed_dim}.ckpt"
 
-    checkpoint_filename = os.path.basename(trainer.checkpoint_callback.best_model_path).split(".ckpt")[0]
-    checkpoint_curr_best_model_path = os.path.join(
-        "/workspace/s07-emlov4-hyperparams/model_storage",
-        f"{checkpoint_filename}_patch_size-{trainer.model.patch_size}_embed_dim-{trainer.model.embed_dim}.ckpt"
-    )
+    # checkpoint_filename = os.path.basename(trainer.checkpoint_callback.best_model_path).split(".ckpt")[0]
+    # checkpoint_curr_best_model_path = os.path.join(
+    #     "/workspace/s07-emlov4-hyperparams/model_storage",
+    #     f"{checkpoint_filename}_patch_size-{trainer.model.patch_size}_embed_dim-{trainer.model.embed_dim}.ckpt"
+    # )
 
     print(f"File saved to {checkpoint_curr_best_model_path}")
     log.info(f"test Check point {checkpoint_curr_best_model_path}")
