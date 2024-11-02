@@ -31,4 +31,5 @@ callbacks:
     mode: "max"
     save_top_k: 1
     save_last: True
-    filename: "/workspace/s07-emlov4-hyperparams/model_storage/epoch-checkpoint.ckpt.ckpt"
+    filename: "/home/runner/work/s07-emlov4-hyperparams/s07-emlov4-hyperparams/model_storage/epoch-checkpoint.ckpt.ckpt" 
+    # "/workspace/s07-emlov4-hyperparams/model_storage/epoch-checkpoint.ckpt.ckpt"
