@@ -6,7 +6,7 @@ default_root_dir: ${paths.output_dir}
 #     - best_model_path: model_storage/epoch0-checkpoint.ckpt
 
 min_epochs: 1 # prevents early stopping
-max_epochs: 5 #3
+max_epochs: 3
 # limit_train_batches: 
 # limit_val_batches: 0.9
 # limit_test_batches: 0.9
